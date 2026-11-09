@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aswin G | DevOps / Platform Engineer</title>
-    <!-- Tailwind CSS -->
+    <title>Aswin G | DevOps & Platform Engineer</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,432 +17,361 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        // Light theme palette
-                        light: {
-                            bg: '#f8fafc',        // Slate 50 background
-                            card: '#ffffff',      // Pure white card
-                            cardHover: '#f1f5f9', // Slate 100 hover state
-                            border: '#e2e8f0',    // Slate 200 border
-                            borderHover: '#cbd5e1',// Slate 300 border hover
-                            heading: '#0f172a',   // Slate 900 text
-                            body: '#334155',      // Slate 700 text
-                            muted: '#64748b'      // Slate 500 muted text
-                        },
-                        accent: {
-                            teal: '#0d9488',      // Teal 600 primary accent
-                            tealHover: '#0f766e', // Teal 700
-                            tealLight: '#ccfbf1', // Teal 100 soft tag background
-                            cyan: '#0284c7',      // Sky 600 secondary accent
-                            emerald: '#059669',   // Emerald 600 success
-                            glow: 'rgba(13, 148, 136, 0.12)'
-                        }
-                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #f8fafc;
-            color: #334155;
-            font-family: 'Inter', sans-serif;
+        .gradient-text {
+            background: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .font-mono-code {
-            font-family: 'JetBrains Mono', monospace;
+        .skill-card {
+            transition: all 0.2s ease-in-out;
         }
-        .shadow-soft {
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-        }
-        .shadow-soft-hover:hover {
-            box-shadow: 0 10px 25px -3px rgba(13, 148, 136, 0.12);
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f8fafc;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+        .skill-card:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-teal-100 selection:text-teal-900">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-teal-100 selection:text-teal-800">
 
-    <!-- Toast Notification for Copying Info -->
-    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 bg-teal-800 text-white font-semibold px-4 py-3 rounded-lg shadow-xl flex items-center gap-2 z-50 font-mono-code text-sm">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
-        <span id="toast-message">Copied to clipboard!</span>
-    </div>
-
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-light-border">
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Brand / Logo -->
-                <a href="#hero" class="flex items-center gap-2 group">
-                    <span class="font-mono-code text-accent-teal font-bold text-lg">&lt;AG /&gt;</span>
-                    <span class="font-bold text-light-heading tracking-tight text-base sm:text-lg group-hover:text-accent-teal transition-colors">Aswin G</span>
+            <div class="flex justify-between h-16 items-center">
+                <a href="#" class="flex items-center space-x-2 text-slate-900 font-bold text-xl tracking-tight">
+                    <span class="text-teal-600 font-mono">&lt;AG /&gt;</span>
+                    <span>Aswin G</span>
                 </a>
+                
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#about" class="hover:text-teal-600 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-teal-600 transition-colors">Skills</a>
+                    <a href="#experience" class="hover:text-teal-600 transition-colors">Experience</a>
+                    <a href="#certifications" class="hover:text-teal-600 transition-colors">Certifications</a>
+                    <a href="#education" class="hover:text-teal-600 transition-colors">Education</a>
+                </nav>
 
-                <!-- Desktop Nav Links -->
-                <div class="hidden md:flex items-center space-x-7 text-sm font-medium">
-                    <a href="#about" class="text-light-body hover:text-accent-teal transition-colors">About</a>
-                    <a href="#skills" class="text-light-body hover:text-accent-teal transition-colors">Skills</a>
-                    <a href="#experience" class="text-light-body hover:text-accent-teal transition-colors">Experience</a>
-                    <a href="#education" class="text-light-body hover:text-accent-teal transition-colors">Education & Certs</a>
-                    <a href="#contact" class="px-4 py-1.5 rounded-md bg-accent-tealLight text-accent-teal hover:bg-accent-teal hover:text-white transition-all font-semibold font-mono-code text-xs">Contact</a>
+                <div class="hidden md:flex items-center space-x-3">
+                    <button onclick="copyEmail()" class="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors flex items-center space-x-2">
+                        <i class="fa-regular fa-copy text-xs"></i>
+                        <span id="copy-text">Copy Email</span>
+                    </button>
                 </div>
 
                 <!-- Mobile menu button -->
-                <button id="mobile-menu-btn" class="md:hidden text-light-body hover:text-light-heading focus:outline-none p-2" aria-label="Toggle Navigation Menu">
-                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-light-border px-4 pt-3 pb-5 space-y-3 text-sm font-medium">
-            <a href="#about" class="block py-2 text-light-body hover:text-accent-teal border-b border-slate-100">About</a>
-            <a href="#skills" class="block py-2 text-light-body hover:text-accent-teal border-b border-slate-100">Skills</a>
-            <a href="#experience" class="block py-2 text-light-body hover:text-accent-teal border-b border-slate-100">Experience</a>
-            <a href="#education" class="block py-2 text-light-body hover:text-accent-teal border-b border-slate-100">Education & Certs</a>
-            <a href="#contact" class="block py-2 text-accent-teal font-mono-code">Contact Info</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-teal-600 py-1 font-medium">About</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-teal-600 py-1 font-medium">Skills</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-teal-600 py-1 font-medium">Experience</a>
+            <a href="#certifications" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-teal-600 py-1 font-medium">Certifications</a>
+            <a href="#education" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-teal-600 py-1 font-medium">Education</a>
+            <div class="pt-2">
+                <button onclick="copyEmail()" class="w-full py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                    <i class="fa-regular fa-copy text-xs"></i>
+                    <span id="mobile-copy-text">Copy Email</span>
+                </button>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Container -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 space-y-24">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
 
-        <!-- HERO SECTION -->
-        <section id="hero" class="pt-6 md:pt-12 pb-4">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div class="lg:col-span-8 space-y-6">
-                    
-                    <!-- Certification Tag -->
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-mono-code font-semibold tracking-wide">
-                        <span class="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
-                        AWS Certified DevOps Engineer - Professional
+        <!-- Hero / About Section -->
+        <section id="about" class="pt-4">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center space-x-2 bg-teal-50 border border-teal-200 rounded-full px-3 py-1 text-xs font-semibold text-teal-700 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                    <span>AWS Certified DevOps Engineer – Professional</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                    DevOps / Platform Engineer building scalable cloud infrastructure.
+                </h1>
+                
+                <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                    AWS Certified DevOps Engineer - Professional with <strong class="text-slate-800">5+ years</strong> building and running production infrastructure on AWS. Specialize in <span class="text-slate-900 font-semibold">Kubernetes (EKS), GitOps (Flux), Terraform,</span> and <span class="text-slate-900 font-semibold">FinOps</span>. Delivered <strong>$400K+</strong> in annual cloud savings and led EC2 to EKS and self-managed MongoDB to Atlas migrations for business-critical platforms.
+                </p>
+
+                <!-- Single Line Contact Bar -->
+                <div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-600 bg-white border border-slate-200 rounded-xl p-4 shadow-sm mb-10">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-location-dot text-teal-600"></i>
+                        <span>Bangalore, India</span>
                     </div>
-
-                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-light-heading leading-tight">
-                        ASWIN G
-                    </h1>
-
-                    <h2 class="text-xl sm:text-2xl font-semibold text-accent-teal font-mono-code">
-                        DevOps / Platform Engineer
-                    </h2>
-
-                    <p class="text-light-body text-base sm:text-lg leading-relaxed max-w-2xl">
-                        AWS Certified DevOps Engineer - Professional with 5+ years building and running production infrastructure on AWS. Specialize in <span class="text-light-heading font-medium">Kubernetes (EKS)</span>, <span class="text-light-heading font-medium">GitOps (Flux)</span>, <span class="text-light-heading font-medium">Terraform</span>, and <span class="text-light-heading font-medium">FinOps</span>. Delivered <span class="text-accent-teal font-semibold">$400K+ in annual cloud savings</span> and led EC2 to EKS and self-managed MongoDB Atlas migrations for business-critical platforms.
-                    </p>
-
-                    <!-- Contact Details Badges -->
-                    <div class="flex flex-wrap items-center gap-3 text-light-body text-xs sm:text-sm font-mono-code py-1">
-                        <span class="flex items-center gap-2 bg-white border border-light-border px-3 py-1.5 rounded-md shadow-sm">
-                            <i class="fa-solid fa-location-dot text-accent-teal"></i> Bangalore, India
-                        </span>
-                        <a href="tel:+919497464987" class="flex items-center gap-2 bg-white border border-light-border px-3 py-1.5 rounded-md hover:border-accent-teal hover:text-accent-teal transition-colors shadow-sm">
-                            <i class="fa-solid fa-phone text-accent-teal"></i> +91 9497464987
-                        </a>
-                        <button onclick="copyToClipboard('aswingangan02@gmail.com', 'Email copied!')" class="flex items-center gap-2 bg-white border border-light-border px-3 py-1.5 rounded-md hover:border-accent-teal hover:text-accent-teal transition-colors shadow-sm" title="Copy email">
-                            <i class="fa-solid fa-envelope text-accent-teal"></i> aswingangan02@gmail.com
+                    <span class="hidden sm:inline text-slate-300">•</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-phone text-teal-600"></i>
+                        <a href="tel:+919497464987" class="hover:text-teal-600 transition-colors">+91 9497464987</a>
+                    </div>
+                    <span class="hidden sm:inline text-slate-300">•</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-envelope text-teal-600"></i>
+                        <a href="mailto:aswingangan02@gmail.com" class="hover:text-teal-600 transition-colors">aswingangan02@gmail.com</a>
+                        <button onclick="copyEmail()" class="text-slate-400 hover:text-teal-600 transition-colors ml-1" title="Copy Email">
+                            <i class="fa-regular fa-copy text-xs"></i>
                         </button>
                     </div>
-
-                    <!-- Call to Action Buttons -->
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a href="mailto:aswingangan02@gmail.com" class="px-6 py-3 rounded-md bg-accent-teal hover:bg-teal-700 text-white font-bold transition-all shadow-md flex items-center gap-2 text-sm font-mono-code">
-                            <i class="fa-regular fa-paper-plane"></i>
-                            <span>Send Email</span>
-                        </a>
-                        <a href="https://linkedin.com/in/aswingangan" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-md bg-white border border-light-border hover:border-accent-teal text-light-heading hover:text-accent-teal font-medium transition-all shadow-sm flex items-center gap-2 text-sm">
-                            <i class="fa-brands fa-linkedin text-lg text-accent-teal"></i>
-                            <span>linkedin.com/in/aswingangan</span>
+                    <span class="hidden sm:inline text-slate-300">•</span>
+                    <div>
+                        <a href="https://linkedin.com/in/aswingangan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1 px-3 py-1 bg-slate-100 hover:bg-teal-50 hover:text-teal-600 border border-slate-200 rounded-md transition-colors text-slate-700 font-medium text-xs">
+                            <i class="fa-brands fa-linkedin text-teal-600 text-sm"></i>
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Code Visual / Card Frame -->
-                <div class="lg:col-span-4">
-                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl relative font-mono-code text-xs text-slate-200">
-                        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                            </div>
-                            <span class="text-slate-400 text-xs">devops-stack.hcl</span>
-                        </div>
-                        <pre class="overflow-x-auto text-slate-200 leading-relaxed"><code><span class="text-teal-400">module</span> <span class="text-emerald-400">"platform_engineer"</span> {
-  <span class="text-sky-400">source</span>    = <span class="text-emerald-400">"github.com/aswin-g/ops"</span>
-  <span class="text-sky-400">name</span>      = <span class="text-emerald-400">"Aswin G"</span>
-  <span class="text-sky-400">certified</span> = <span class="text-emerald-400">"AWS DevOps Pro"</span>
-
-  <span class="text-sky-400">capabilities</span> = [
-    <span class="text-emerald-400">"Kubernetes (EKS)"</span>,
-    <span class="text-emerald-400">"GitOps (Flux CD)"</span>,
-    <span class="text-emerald-400">"Terraform Modules"</span>,
-    <span class="text-emerald-400">"MongoDB Atlas Sync"</span>,
-    <span class="text-emerald-400">"FinOps Optimization"</span>
-  ]
-
-  <span class="text-sky-400">annual_savings</span> = <span class="text-emerald-400">"$400K+"</span>
-}</code></pre>
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                        <div class="text-2xl font-bold text-teal-600">$400K+</div>
+                        <div class="text-xs text-slate-500 font-medium">Annual Cloud Savings</div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                        <div class="text-2xl font-bold text-teal-600">70%</div>
+                        <div class="text-xs text-slate-500 font-medium">Faster Provisioning via IaC</div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                        <div class="text-2xl font-bold text-teal-600">80%</div>
+                        <div class="text-xs text-slate-500 font-medium">Reduced Credential Rotation Effort</div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                        <div class="text-2xl font-bold text-teal-600">99.9%</div>
+                        <div class="text-xs text-slate-500 font-medium">Production Uptime Maintained</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- METRIC STAT CARDS -->
-        <section id="about" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="bg-white border border-light-border p-6 rounded-xl shadow-soft shadow-soft-hover transition-all">
-                <div class="text-accent-teal text-3xl font-extrabold font-mono-code mb-1">$400K+</div>
-                <div class="text-light-heading font-bold mb-1 text-sm">Annual AWS Savings</div>
-                <p class="text-light-muted text-xs leading-relaxed">Achieved through rightsizing & idle-resource cleanup across multi-account architecture.</p>
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <div class="border-b border-slate-200 pb-4 mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Technical Skills</h2>
+                <p class="text-sm text-slate-500">Core technologies, tools, and platforms I work with</p>
             </div>
 
-            <div class="bg-white border border-light-border p-6 rounded-xl shadow-soft shadow-soft-hover transition-all">
-                <div class="text-accent-cyan text-3xl font-extrabold font-mono-code mb-1">5+ Years</div>
-                <div class="text-light-heading font-bold mb-1 text-sm">AWS Production Experience</div>
-                <p class="text-light-muted text-xs leading-relaxed">Designing, automating, and maintaining business-critical enterprise cloud infrastructure.</p>
+            <!-- Skill Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="filterSkills('all')" class="skill-btn active-skill-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 text-white shadow-sm transition-colors" data-category="all">All Skills</button>
+                <button onclick="filterSkills('cloud')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:border-slate-300 transition-colors" data-category="cloud">AWS & Cloud</button>
+                <button onclick="filterSkills('k8s')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:border-slate-300 transition-colors" data-category="k8s">Kubernetes & GitOps</button>
+                <button onclick="filterSkills('iac')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:border-slate-300 transition-colors" data-category="iac">IaC & CI/CD</button>
+                <button onclick="filterSkills('observability')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:border-slate-300 transition-colors" data-category="observability">Observability & Security</button>
+                <button onclick="filterSkills('data')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:border-slate-300 transition-colors" data-category="data">Data Platforms & Scripting</button>
             </div>
 
-            <div class="bg-white border border-light-border p-6 rounded-xl shadow-soft shadow-soft-hover transition-all">
-                <div class="text-accent-teal text-3xl font-extrabold font-mono-code mb-1">~70%</div>
-                <div class="text-light-heading font-bold mb-1 text-sm">Faster Provisioning</div>
-                <p class="text-light-muted text-xs leading-relaxed">Built reusable Terraform modules adopted across 10+ environments.</p>
-            </div>
-
-            <div class="bg-white border border-light-border p-6 rounded-xl shadow-soft shadow-soft-hover transition-all">
-                <div class="text-accent-emerald text-3xl font-extrabold font-mono-code mb-1">99.9%</div>
-                <div class="text-light-heading font-bold mb-1 text-sm">Platform Uptime</div>
-                <p class="text-light-muted text-xs leading-relaxed">Maintained production reliability while cutting incident MTTR by ~35%.</p>
-            </div>
-        </section>
-
-        <!-- TECHNICAL SKILLS SECTION -->
-        <section id="skills" class="space-y-8">
-            <div class="flex items-center gap-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-light-heading flex items-center gap-3">
-                    <span class="font-mono-code text-accent-teal text-xl sm:text-2xl">01.</span> Technical Skills
-                </h2>
-                <div class="h-px bg-light-border flex-1"></div>
-            </div>
-
-            <!-- Skill Filters -->
-            <div class="flex flex-wrap items-center gap-2" id="skill-filters">
-                <button onclick="filterSkills('all')" class="skill-btn active px-4 py-2 rounded-lg text-xs font-mono-code font-semibold transition-all bg-accent-teal text-white shadow-sm" data-category="all">
-                    All Skills
-                </button>
-                <button onclick="filterSkills('aws')" class="skill-btn px-4 py-2 rounded-lg text-xs font-mono-code font-medium bg-white border border-light-border text-light-body hover:border-accent-teal transition-all shadow-sm" data-category="aws">
-                    AWS
-                </button>
-                <button onclick="filterSkills('k8s')" class="skill-btn px-4 py-2 rounded-lg text-xs font-mono-code font-medium bg-white border border-light-border text-light-body hover:border-accent-teal transition-all shadow-sm" data-category="k8s">
-                    Kubernetes & GitOps
-                </button>
-                <button onclick="filterSkills('iac')" class="skill-btn px-4 py-2 rounded-lg text-xs font-mono-code font-medium bg-white border border-light-border text-light-body hover:border-accent-teal transition-all shadow-sm" data-category="iac">
-                    IaC, Config & CI/CD
-                </button>
-                <button onclick="filterSkills('obs')" class="skill-btn px-4 py-2 rounded-lg text-xs font-mono-code font-medium bg-white border border-light-border text-light-body hover:border-accent-teal transition-all shadow-sm" data-category="obs">
-                    Observability & Security
-                </button>
-                <button onclick="filterSkills('data')" class="skill-btn px-4 py-2 rounded-lg text-xs font-mono-code font-medium bg-white border border-light-border text-light-body hover:border-accent-teal transition-all shadow-sm" data-category="data">
-                    Data Platforms & Scripting
-                </button>
-            </div>
-
-            <!-- Skills Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skills-container">
-
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="skills-grid">
                 <!-- AWS -->
-                <div class="skill-card bg-white border border-light-border p-6 rounded-xl hover:border-accent-teal/50 transition-all shadow-soft" data-cat="aws">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-orange-50 text-orange-600 border border-orange-100">
-                            <i class="fa-brands fa-aws text-xl"></i>
+                <div class="skill-item bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-cat="cloud">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                            <i class="fa-brands fa-aws text-lg"></i>
                         </div>
-                        <h3 class="font-bold text-light-heading text-base">AWS</h3>
+                        <h3 class="font-semibold text-slate-900">AWS Infrastructure</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">EKS</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">EC2</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">VPC</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">PrivateLink</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">IAM</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">ALB</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">S3</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">RDS</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">EMR</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">OpenSearch</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Systems Manager (SSM)</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">WAF</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">CloudWatch</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">EKS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">EC2</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">VPC</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">PrivateLink</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">IAM</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">ALB</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">S3</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">RDS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">EMR</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">OpenSearch</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">SSM</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">WAF</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">CloudWatch</span>
                     </div>
                 </div>
 
                 <!-- Kubernetes & GitOps -->
-                <div class="skill-card bg-white border border-light-border p-6 rounded-xl hover:border-accent-teal/50 transition-all shadow-soft" data-cat="k8s">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-sky-50 text-sky-600 border border-sky-100">
-                            <i class="fa-solid fa-dharmachakra text-xl"></i>
+                <div class="skill-item bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-cat="k8s">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-dharmachakra text-lg"></i>
                         </div>
-                        <h3 class="font-bold text-light-heading text-base">Kubernetes & GitOps</h3>
+                        <h3 class="font-semibold text-slate-900">Kubernetes & GitOps</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Kubernetes</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Docker</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Flux CD</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Cluster Autoscaler</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">ExternalDNS</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">External Secrets Operator</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Kubernetes</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Docker</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Flux CD</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Cluster Autoscaler</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">ExternalDNS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">External Secrets Operator</span>
                     </div>
                 </div>
 
-                <!-- IaC & Config + CI/CD -->
-                <div class="skill-card bg-white border border-light-border p-6 rounded-xl hover:border-accent-teal/50 transition-all shadow-soft" data-cat="iac">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-purple-50 text-purple-600 border border-purple-100">
-                            <i class="fa-solid fa-code-branch text-xl"></i>
+                <!-- IaC & CI/CD -->
+                <div class="skill-item bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-cat="iac">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-code-branch text-lg"></i>
                         </div>
-                        <h3 class="font-bold text-light-heading text-base">IaC, Config & CI/CD</h3>
+                        <h3 class="font-semibold text-slate-900">IaC & CI/CD</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Terraform</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">CloudFormation</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Ansible</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Jenkins</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Codefresh</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">JFrog Artifactory</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Blue-Green Deployments</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Terraform</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">CloudFormation</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Ansible</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Jenkins</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Codefresh</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">JFrog Artifactory</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Blue-Green Deployments</span>
                     </div>
                 </div>
 
-                <!-- Observability & Security -->
-                <div class="skill-card bg-white border border-light-border p-6 rounded-xl hover:border-accent-teal/50 transition-all shadow-soft" data-cat="obs">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100">
-                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                <!-- Observability -->
+                <div class="skill-item bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-cat="observability">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-chart-line text-lg"></i>
                         </div>
-                        <h3 class="font-bold text-light-heading text-base">Observability & Security</h3>
+                        <h3 class="font-semibold text-slate-900">Observability & Security</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Datadog</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">New Relic</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Splunk</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">CloudWatch</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">IAM</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Kubernetes RBAC</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">AWS WAF</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Signal Sciences</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">CrowdStrike Falcon</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Datadog</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">New Relic</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Splunk</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Kubernetes RBAC</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">AWS WAF</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Signal Sciences</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">CrowdStrike Falcon</span>
                     </div>
                 </div>
 
                 <!-- Data Platforms & Scripting -->
-                <div class="skill-card bg-white border border-light-border p-6 rounded-xl hover:border-accent-teal/50 transition-all shadow-soft md:col-span-2" data-cat="data">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-teal-50 text-accent-teal border border-teal-100">
-                            <i class="fa-solid fa-database text-xl"></i>
+                <div class="skill-item bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-cat="data">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-database text-lg"></i>
                         </div>
-                        <h3 class="font-bold text-light-heading text-base">Data Platforms & Scripting</h3>
+                        <h3 class="font-semibold text-slate-900">Data Platforms & Scripting</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">MongoDB Atlas</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">mongosync</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Amazon EMR</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Apache Airflow</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Apache Kylin</span>
-                        <span class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono-code">Tableau Server</span>
-                        <span class="px-3 py-1 rounded bg-teal-50 border border-teal-200 text-accent-teal text-xs font-mono-code font-bold">Python</span>
-                        <span class="px-3 py-1 rounded bg-teal-50 border border-teal-200 text-accent-teal text-xs font-mono-code font-bold">Bash</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">MongoDB Atlas</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">mongosync</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Amazon EMR</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Apache Airflow</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Apache Kylin</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Kylo</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Tableau Server</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Python</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-medium">Bash</span>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- EXPERIENCE SECTION -->
-        <section id="experience" class="space-y-8">
-            <div class="flex items-center gap-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-light-heading flex items-center gap-3">
-                    <span class="font-mono-code text-accent-teal text-xl sm:text-2xl">02.</span> Professional Experience
-                </h2>
-                <div class="h-px bg-light-border flex-1"></div>
+        <!-- Professional Experience Section -->
+        <section id="experience">
+            <div class="border-b border-slate-200 pb-4 mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Professional Experience</h2>
+                <p class="text-sm text-slate-500">Career progression and accomplishments</p>
             </div>
 
-            <div class="bg-white border border-light-border rounded-xl p-6 sm:p-8 space-y-10 shadow-soft">
-                <!-- Company Header -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-light-border gap-2">
+            <!-- Company Card -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
+                
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-6">
                     <div>
-                        <h3 class="text-xl font-bold text-light-heading flex items-center gap-2">
-                            PowerSchool India Pvt. Ltd
-                        </h3>
-                        <p class="text-accent-teal text-sm font-mono-code mt-1">Bangalore, India</p>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-teal-600 mb-1">Current Employer</div>
+                        <h3 class="text-2xl font-bold text-slate-900">PowerSchool India Pvt. Ltd</h3>
+                        <p class="text-sm text-slate-500"><i class="fa-solid fa-location-dot mr-1"></i> Bangalore, India</p>
                     </div>
-                    <span class="text-light-muted font-mono-code text-sm">Jul 2021 – Present</span>
+                    <div class="mt-2 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-slate-100 text-slate-700 font-mono text-xs rounded-full font-medium">
+                            Jul 2021 – Present (5+ Years)
+                        </span>
+                    </div>
                 </div>
 
                 <!-- Timeline Roles -->
-                <div class="relative border-l-2 border-slate-200 pl-6 sm:pl-8 space-y-12">
+                <div class="space-y-10 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-200">
 
                     <!-- Role 1 -->
-                    <div class="relative">
-                        <!-- Dot -->
-                        <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-accent-teal border-4 border-white"></div>
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-1">
-                            <h4 class="text-lg font-bold text-light-heading">Cloud Operations Engineer I</h4>
-                            <span class="text-xs font-mono-code text-accent-teal bg-teal-50 border border-teal-200 px-3 py-1 rounded-full w-fit">Apr 2025 – Present</span>
+                    <div class="relative pl-10">
+                        <div class="absolute left-0 top-1.5 w-7 h-7 bg-teal-600 text-white rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-white">
+                            1
                         </div>
-                        <ul class="space-y-3 text-light-body text-sm leading-relaxed list-disc list-outside ml-4">
-                            <li>Migrated a production PHP application from EC2 to Amazon EKS end-to-end: containerized it with Docker, built the Kubernetes specs (HPA, PDB, Ingress, External Secrets), and shipped via Flux GitOps.</li>
-                            <li>Migrated self-managed MongoDB replica sets to MongoDB Atlas using mongosync over AWS PrivateLink, with Terraform-provisioned clusters.</li>
-                            <li>Rolled out CrowdStrike Falcon to 100+ EC2 instances via AWS SSM and built it into AMI pipelines for default protection.</li>
-                            <li>Automated RDS credential rotation with Ansible and Jenkins plus IAM-based access, cutting manual effort by ~80%.</li>
-                            <li>Migrated Jenkins executors from CentOS to Amazon Linux 2, resolving dependency conflicts with zero pipeline disruption.</li>
-                            <li>Decommissioned legacy platforms (Birst, EMR clusters, unused Redis/RDS/MongoDB), saving ~$14K/year.</li>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                            <h4 class="text-lg font-bold text-slate-900">Cloud Operations Engineer I</h4>
+                            <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">Apr 2025 – Present</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-600 list-disc list-outside pl-4">
+                            <li><strong class="text-slate-800">EKS & GitOps Migration:</strong> Migrated a production PHP application from EC2 to Amazon EKS end-to-end: containerized it with Docker, built the Kubernetes specs (HPA, PDB, Ingress, External Secrets), and shipped via Flux GitOps.</li>
+                            <li><strong class="text-slate-800">MongoDB Atlas Migration:</strong> Migrated self-managed MongoDB replica sets to MongoDB Atlas using mongosync over AWS PrivateLink, with Terraform-provisioned clusters.</li>
+                            <li><strong class="text-slate-800">Security Automation:</strong> Rolled out CrowdStrike Falcon to 100+ EC2 instances via AWS SSM and built it into AMI pipelines for default protection.</li>
+                            <li><strong class="text-slate-800">Credential Rotation:</strong> Automated RDS credential rotation with Ansible and Jenkins plus IAM-based access, cutting manual effort by ~80%.</li>
+                            <li><strong class="text-slate-800">OS Modernization:</strong> Migrated Jenkins executors from CentOS to Amazon Linux 2023, resolving dependency conflicts with zero pipeline disruption.</li>
+                            <li><strong class="text-slate-800">Legacy Decommissioning:</strong> Decommissioned legacy platforms (Birst, EMR clusters, unused Redis/RDS/MongoDB), saving ~$14K/year.</li>
                         </ul>
                     </div>
 
                     <!-- Role 2 -->
-                    <div class="relative">
-                        <!-- Dot -->
-                        <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white"></div>
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-1">
-                            <h4 class="text-lg font-bold text-light-heading">Associate Cloud Operations Engineer II</h4>
-                            <span class="text-xs font-mono-code text-slate-600 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full w-fit">Apr 2022 – Apr 2025</span>
+                    <div class="relative pl-10">
+                        <div class="absolute left-0 top-1.5 w-7 h-7 bg-slate-400 text-white rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-white">
+                            2
                         </div>
-                        <ul class="space-y-3 text-light-body text-sm leading-relaxed list-disc list-outside ml-4">
-                            <li>Cut AWS spend by ~$400K/year through rightsizing and idle-resource cleanup across accounts.</li>
-                            <li>Built reusable Terraform modules adopted across 10+ environments, reducing provisioning time by ~70%.</li>
-                            <li>Enabled zero-downtime production releases with blue-green deployments using Terraform and ALB routing.</li>
-                            <li>Built and upgraded the Amazon EMR big data platform (Airflow, Kylin, Kylo, Tableau edge nodes); tuning cut ETL runtime by ~30% and saved ~$15K/year.</li>
-                            <li>Improved OpenSearch performance by ~40% through shard, node-sizing, and index lifecycle optimization.</li>
-                            <li>Led incident response and RCA for high-priority issues, reducing mean time to resolution by ~35%.</li>
-                            <li>Implemented and tuned AWS WAF rules, blocking 500+ malicious requests per month.</li>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                            <h4 class="text-lg font-bold text-slate-900">Associate Cloud Operations Engineer II</h4>
+                            <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">Apr 2022 – Apr 2025</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-600 list-disc list-outside pl-4">
+                            <li><strong class="text-slate-800">FinOps Impact:</strong> Cut AWS spend by ~$400K/year through rightsizing and idle-resource cleanup across accounts.</li>
+                            <li><strong class="text-slate-800">Modular IaC:</strong> Built reusable Terraform modules adopted across 10+ environments, reducing provisioning time by ~70%.</li>
+                            <li><strong class="text-slate-800">Zero-Downtime Releases:</strong> Enabled zero-downtime production releases with blue-green deployments using Terraform and ALB routing.</li>
+                            <li><strong class="text-slate-800">Big Data Performance:</strong> Built and upgraded the Amazon EMR big data platform (Airflow, Kylin, Kylo, Tableau edge nodes); tuning cut ETL runtime by ~30% and saved ~$15K/year.</li>
+                            <li><strong class="text-slate-800">Search Tuning:</strong> Improved OpenSearch performance by ~40% through shard, node-sizing, and index lifecycle optimization.</li>
+                            <li><strong class="text-slate-800">Incident Response:</strong> Led incident response and RCA for high-priority issues, reducing mean time to resolution by ~35%.</li>
+                            <li><strong class="text-slate-800">WAF Security:</strong> Implemented and tuned AWS WAF rules, blocking 500+ malicious requests per month.</li>
                         </ul>
                     </div>
 
                     <!-- Role 3 -->
-                    <div class="relative">
-                        <!-- Dot -->
-                        <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-1">
-                            <h4 class="text-lg font-bold text-light-heading">Associate Cloud Operations Engineer I</h4>
-                            <span class="text-xs font-mono-code text-slate-600 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full w-fit">Jul 2021 – Apr 2022</span>
+                    <div class="relative pl-10">
+                        <div class="absolute left-0 top-1.5 w-7 h-7 bg-slate-300 text-white rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-white">
+                            3
                         </div>
-                        <ul class="space-y-3 text-light-body text-sm leading-relaxed list-disc list-outside ml-4">
-                            <li>Maintained 99.9% uptime across AWS accounts; expanded observability with Datadog, CloudWatch, and Splunk, increasing issue-detection coverage by ~50%.</li>
-                            <li>Automated OS patching using SSM and compliance reporting using Ansible.</li>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                            <h4 class="text-lg font-bold text-slate-900">Associate Cloud Operations Engineer I</h4>
+                            <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">Jul 2021 – Apr 2022</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-600 list-disc list-outside pl-4">
+                            <li><strong class="text-slate-800">High Availability:</strong> Maintained 99.9% uptime across AWS accounts; expanded observability with Datadog, CloudWatch, and Splunk, increasing issue-detection coverage by ~50%.</li>
+                            <li><strong class="text-slate-800">Patching & Compliance:</strong> Automated OS patching using SSM and compliance reporting using Ansible.</li>
                         </ul>
                     </div>
 
@@ -450,176 +379,127 @@
             </div>
         </section>
 
-        <!-- EDUCATION & CERTIFICATIONS -->
-        <section id="education" class="space-y-8">
-            <div class="flex items-center gap-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-light-heading flex items-center gap-3">
-                    <span class="font-mono-code text-accent-teal text-xl sm:text-2xl">03.</span> Education & Certifications
-                </h2>
-                <div class="h-px bg-light-border flex-1"></div>
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <div class="border-b border-slate-200 pb-4 mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Certifications</h2>
+                <p class="text-sm text-slate-500">Verified industry credentials</p>
             </div>
 
-            <!-- AWS Certification Banner -->
-            <div class="bg-white border border-teal-200 p-6 rounded-xl shadow-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="p-4 rounded-xl bg-teal-50 text-accent-teal border border-teal-100">
-                        <i class="fa-solid fa-award text-3xl"></i>
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-brands fa-aws text-2xl"></i>
                     </div>
                     <div>
-                        <span class="text-xs font-mono-code text-accent-teal font-semibold tracking-wider uppercase">Professional Certification</span>
-                        <h3 class="text-xl font-bold text-light-heading">AWS Certified DevOps Engineer - Professional</h3>
-                        <p class="text-light-muted text-xs sm:text-sm mt-0.5">Demonstrated expertise in continuous delivery systems, AWS infrastructure automation, and enterprise platform operational security.</p>
+                        <span class="text-xs font-semibold text-teal-600 uppercase tracking-wider">Professional Level</span>
+                        <h3 class="text-xl font-bold text-slate-900">AWS Certified DevOps Engineer – Professional</h3>
+                        <p class="text-sm text-slate-500">Amazon Web Services • Verified Badge</p>
                     </div>
                 </div>
-                <a href="https://www.credly.com/badges/7c440799-8772-498a-a28d-8147895c9098" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-accent-teal text-white font-bold text-xs font-mono-code hover:bg-teal-700 transition-colors whitespace-nowrap shadow-sm">
-                    View Badge
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <!-- Education Item 1 -->
-                <div class="bg-white border border-light-border p-6 rounded-xl flex flex-col justify-between space-y-4 shadow-soft">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-accent-teal text-xs font-mono-code">2021 – 2022</span>
-                            <span class="text-xs font-mono-code text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded">Remote</span>
-                        </div>
-                        <h4 class="font-bold text-light-heading text-base">Foundational Level, Programming & Data Science</h4>
-                        <p class="text-light-muted text-sm mt-1">IIT Madras</p>
-                    </div>
+                <div>
+                    <a href="https://www.credly.com/badges/7c440799-8772-498a-a28d-8147895c9098" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-sm font-semibold transition-colors shadow-sm">
+                        <span>View Badge</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
                 </div>
-
-                <!-- Education Item 2 -->
-                <div class="bg-white border border-light-border p-6 rounded-xl flex flex-col justify-between space-y-4 shadow-soft">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-accent-teal text-xs font-mono-code">2014 – 2018</span>
-                            <span class="text-xs font-mono-code text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded">Full-time</span>
-                        </div>
-                        <h4 class="font-bold text-light-heading text-base">B.Tech, Mechanical Engineering</h4>
-                        <p class="text-light-muted text-sm mt-1">Cochin University of Science and Technology</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="space-y-8 pt-4">
-            <div class="bg-gradient-to-b from-white to-slate-50 border border-light-border rounded-2xl p-8 sm:p-12 text-center space-y-6 relative overflow-hidden shadow-soft">
-                <div class="absolute top-0 right-1/2 translate-x-1/2 w-96 h-32 bg-accent-teal/5 blur-3xl rounded-full"></div>
+        <!-- Education Section -->
+        <section id="education">
+            <div class="border-b border-slate-200 pb-4 mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Education</h2>
+                <p class="text-sm text-slate-500">Academic foundation and continuous learning</p>
+            </div>
 
-                <span class="font-mono-code text-accent-teal text-xs sm:text-sm font-semibold tracking-wider uppercase">Get In Touch</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-light-heading tracking-tight">Let's Connect</h2>
-                <p class="text-light-body max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-                    I am actively available for DevOps, SRE, and Platform Engineering roles. Feel free to reach out directly via email or call.
-                </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- CUST -->
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                    <div class="w-10 h-10 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <span class="text-xs font-mono text-slate-400">2014 – 2018</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1">B.Tech, Mechanical Engineering</h3>
+                    <p class="text-sm text-slate-600 mt-1">Cochin University of Science and Technology</p>
+                </div>
 
-                <!-- Full Contact Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto pt-4 text-xs font-mono-code">
-                    <button onclick="copyToClipboard('aswingangan02@gmail.com', 'Email copied!')" class="p-4 rounded-xl bg-white border border-light-border hover:border-accent-teal text-light-body hover:text-accent-teal transition-all flex flex-col items-center justify-center gap-2 group shadow-sm">
-                        <i class="fa-regular fa-envelope text-accent-teal text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="truncate max-w-full">aswingangan02@gmail.com</span>
-                    </button>
-
-                    <a href="tel:+919497464987" class="p-4 rounded-xl bg-white border border-light-border hover:border-accent-teal text-light-body hover:text-accent-teal transition-all flex flex-col items-center justify-center gap-2 group shadow-sm">
-                        <i class="fa-solid fa-phone text-accent-teal text-xl group-hover:scale-110 transition-transform"></i>
-                        <span>+91 9497464987</span>
-                    </a>
-
-                    <a href="https://linkedin.com/in/aswingangan" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-white border border-light-border hover:border-accent-teal text-light-body hover:text-accent-teal transition-all flex flex-col items-center justify-center gap-2 group shadow-sm">
-                        <i class="fa-brands fa-linkedin text-accent-teal text-xl group-hover:scale-110 transition-transform"></i>
-                        <span>aswingangan</span>
-                    </a>
+                <!-- IIT Madras -->
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                    <div class="w-10 h-10 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-laptop-code text-lg"></i>
+                    </div>
+                    <span class="text-xs font-mono text-slate-400">2021 – 2022</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1">Foundational Level, Programming & Data Science</h3>
+                    <p class="text-sm text-slate-600 mt-1">Indian Institute of Technology Madras (Remote)</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-light-border py-8 text-center text-xs font-mono-code text-light-muted bg-white">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-8 mt-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div>
-                <span>Aswin G — DevOps / Platform Engineer</span>
+                © <script>document.write(new Date().getFullYear())</script> Aswin G. Hosted on GitHub Pages.
             </div>
-            <div class="flex items-center space-x-6">
-                <a href="https://linkedin.com/in/aswingangan" target="_blank" rel="noopener noreferrer" class="hover:text-accent-teal transition-colors">LinkedIn</a>
-                <a href="mailto:aswingangan02@gmail.com" class="hover:text-accent-teal transition-colors">Email</a>
-                <a href="#hero" class="hover:text-accent-teal transition-colors">Back to top ↑</a>
+            <div class="flex items-center space-x-4">
+                <a href="mailto:aswingangan02@gmail.com" class="hover:text-teal-600 transition-colors">aswingangan02@gmail.com</a>
+                <span>•</span>
+                <a href="https://linkedin.com/in/aswingangan" target="_blank" rel="noopener noreferrer" class="hover:text-teal-600 transition-colors">LinkedIn</a>
             </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE SCRIPTS -->
+    <!-- Interactive Scripts -->
     <script>
-        // Copy to clipboard helper function
-        function copyToClipboard(text, successMessage) {
-            const el = document.createElement('textarea');
-            el.value = text;
-            el.setAttribute('readonly', '');
-            el.style.position = 'absolute';
-            el.style.left = '-9999px';
-            document.body.appendChild(el);
-            
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-            showToast(successMessage || 'Copied to clipboard!');
+        // Copy Email Functionality
+        function copyEmail() {
+            const email = 'aswingangan02@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const btnText = document.getElementById('copy-text');
+                const mobileBtnText = document.getElementById('mobile-copy-text');
+                
+                if (btnText) btnText.innerText = 'Copied!';
+                if (mobileBtnText) mobileBtnText.innerText = 'Copied!';
+                
+                setTimeout(() => {
+                    if (btnText) btnText.innerText = 'Copy Email';
+                    if (mobileBtnText) mobileBtnText.innerText = 'Copy Email';
+                }, 2000);
+            });
         }
 
-        // Show Toast Notification
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.textContent = msg;
-            
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        // Filter Technical Skills
+        // Skill Filter Functionality
         function filterSkills(category) {
+            const items = document.querySelectorAll('.skill-item');
             const buttons = document.querySelectorAll('.skill-btn');
+
             buttons.forEach(btn => {
                 if (btn.getAttribute('data-category') === category) {
-                    btn.className = "skill-btn active px-4 py-2 rounded-lg text-xs font-mono-code font-semibold transition-all bg-accent-teal text-white shadow-sm";
+                    btn.classList.add('bg-teal-600', 'text-white');
+                    btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
                 } else {
-                    btn.className = "skill-btn px-4 py-2 rounded-lg text-xs font-mono-code font-medium bg-white border border-light-border text-light-body hover:border-accent-teal transition-all shadow-sm";
+                    btn.classList.remove('bg-teal-600', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
                 }
             });
 
-            const cards = document.querySelectorAll('.skill-card');
-            cards.forEach(card => {
-                const cardCat = card.getAttribute('data-cat');
-                if (category === 'all' || cardCat === category) {
-                    card.style.display = 'block';
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-cat') === category) {
+                    item.style.display = 'block';
                 } else {
-                    card.style.display = 'none';
+                    item.style.display = 'none';
                 }
             });
         }
 
         // Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
     </script>
 </body>
 </html>
